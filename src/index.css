@@ -4,3 +4,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.background{
+    background: url('../public/images/more/13.jpg');
+}
