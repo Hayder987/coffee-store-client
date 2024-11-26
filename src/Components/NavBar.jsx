@@ -14,7 +14,6 @@ const NavBar = () => {
                 <ul className="flex justify-center items-center font-font1 text-xl font-medium gap-10">
                     <NavLink to="/"><li className="">Home</li></NavLink>
                     <NavLink to="/addpost"><li className="">Add Post</li></NavLink>
-                    <NavLink to="/editpost"><li className="">Edit Post</li></NavLink>
                 </ul>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { FaEye } from "react-icons/fa";
 import { MdDelete, MdEdit } from "react-icons/md";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
 
 
@@ -60,8 +61,8 @@ const Card = ({coffee, allData, setAllData}) => {
               </h3>
             </div>
             <div className="flex flex-col gap-5">
-                <button className="bg-[#D2B48C] p-3 text-xl text-white rounded-lg"><FaEye /></button>
-                <button className="bg-[#3C393B] p-3 text-xl text-white rounded-lg"><MdEdit /></button>
+                <Link to={`/details/${_id}`}><button className="bg-[#D2B48C] p-3 text-xl text-white rounded-lg"><FaEye /></button></Link>
+                <Link to={`/editpost/${_id}`}><button className="bg-[#3C393B] p-3 text-xl text-white rounded-lg"><MdEdit /></button></Link>
                 <button onClick={()=>deleteHandler(_id)} className="bg-[#EA4744] p-3 text-xl text-white rounded-lg"><MdDelete /></button>
             </div>
             

@@ -4,6 +4,7 @@ import Errorpage from "../pages/Errorpage";
 import Home from "../pages/Home";
 import AddProduct from "../pages/AddProduct";
 import UpdateProduct from "../pages/UpdateProduct";
+import DetailsPage from "../pages/DetailsPage";
 
 const router = createBrowserRouter([
     {
@@ -21,8 +22,14 @@ const router = createBrowserRouter([
                 element:<AddProduct></AddProduct>
             },
             {
-                path:'/editpost',
-                element:<UpdateProduct></UpdateProduct>
+                path:'/editpost/:id',
+                element:<UpdateProduct></UpdateProduct>,
+                loader : ({params})=> fetch(`http://localhost:4000/coffees/${params.id}`)
+            },
+            {
+                path:"/details/:id",
+                element: <DetailsPage></DetailsPage>,
+                loader : ({params})=> fetch(`http://localhost:4000/coffees/${params.id}`)
             }
         ]
 

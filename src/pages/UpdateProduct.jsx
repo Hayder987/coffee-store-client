@@ -1,7 +1,42 @@
-import { Link } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 
 
 const UpdateProduct = () => {
+    const loaderData = useLoaderData();
+    const {_id}  = loaderData || {}
+    const navigate = useNavigate()
+
+    console.log(_id)
+
+const updateHandler = e =>{
+    e.preventDefault();
+
+    const form = e.target;
+        const name = form.name.value;
+        const chef = form.chef.value;
+        const supplier = form.supplier.value;
+        const taste = form.taste.value;
+        const category = form.category.value;
+        const details = form.details.value;
+        const imgPath = form.imgPath.value;
+
+        const coffee = {name, chef, supplier, taste, category, details, imgPath};
+
+        fetch(`http://localhost:4000/coffees/${_id}`,{
+            method: "PUT",
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(coffee)
+        })
+        .then(res=> res.json())
+        .then(data=> {
+            console.log(data)
+            form.reset()
+            navigate('/')
+        })
+}
+
     return (
         <div style={{background: "url('../../public/images/more/11.png')",
             backgroundSize:"cover",
@@ -17,7 +52,7 @@ const UpdateProduct = () => {
                     Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
                     as opposed to using Content here.</p>
                     <div className="">
-                        <form className="flex flex-col gap-6">
+                        <form onSubmit={updateHandler} className="flex flex-col gap-6">
                             {/* name and chef */}
                            <div className="flex flex-col md:flex-row gap-6">
                                <div className="form-control w-full">
