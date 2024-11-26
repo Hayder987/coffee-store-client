@@ -2,6 +2,34 @@ import { Link } from "react-router";
 
 
 const AddProduct = () => {
+
+    const addFormHandler = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const chef = form.chef.value;
+        const supplier = form.supplier.value;
+        const taste = form.taste.value;
+        const category = form.category.value;
+        const details = form.details.value;
+        const imgPath = form.imgPath.value;
+
+        const coffee = {name, chef, supplier, taste, category, details, imgPath}
+
+        fetch('http://localhost:4000/coffees', {
+            method: "POST",
+            headers:{
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(coffee)
+        })
+        .then(res=> res.json())
+        .then(data=> {
+            alert('item Added successfully')
+            form.reset()
+        })
+    }
+
     return (
         <div style={{background: "url('../../public/images/more/11.png')",
             backgroundSize:"cover",
@@ -17,7 +45,7 @@ const AddProduct = () => {
                     Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
                     as opposed to using Content here.</p>
                     <div className="">
-                        <form className="flex flex-col gap-6">
+                        <form onSubmit={addFormHandler} className="flex flex-col gap-6">
                             {/* name and chef */}
                            <div className="flex flex-col md:flex-row gap-6">
                                <div className="form-control w-full">
