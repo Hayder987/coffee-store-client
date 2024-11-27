@@ -2,9 +2,16 @@ import { FaEye } from "react-icons/fa";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
-
+import Aos from "aos";
+import { useEffect } from "react";
 
 const Card = ({coffee, allData, setAllData}) => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, 
+      once: true,  
+    });
+  }, []);
    
   const {_id, name, chef, supplier, taste, category, details, imgPath} = coffee || {}
 
@@ -42,7 +49,12 @@ const Card = ({coffee, allData, setAllData}) => {
   }
 
     return (
-        <div className="bg-[#F5F4F1] rounded-xl flex justify-between items-center py-4 px-4 lg:px-12">
+        <div 
+        data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"
+
+        className="bg-[#F5F4F1] rounded-xl flex justify-between items-center py-4 px-4 lg:px-12">
             <div className="">
                <img src={imgPath} alt="" />
             </div>

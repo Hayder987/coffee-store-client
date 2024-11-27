@@ -1,8 +1,19 @@
+import Aos from "aos";
+import { useEffect } from "react";
 
 
 const Footer = () => {
+  useEffect(()=>{
+   Aos.init({
+    duration: 2000,
+    once: true
+   })
+  }, [])
     return (
-        <div>
+        <div 
+       data-aos="fade-up"
+        
+        >
             <footer className="footer background text-base-content p-10">
               <nav>
                 <h6 className="footer-title">Services</h6>

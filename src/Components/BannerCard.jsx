@@ -1,8 +1,18 @@
+import Aos from "aos";
+import { useEffect } from "react";
 
 
 const BannerCard = () => {
+    useEffect(()=>{
+     Aos.init({
+        duration:2000,
+        once: true
+     })
+    },[])
     return (
-        <div className="bg-[#ECEAE3] py-4 px-6 md:py-6 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-28">
+        <div 
+        data-aos="flip-up"
+        className="bg-[#ECEAE3] py-4 px-6 md:py-6 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-28">
             <div className="p-4">
                 <img src="../../public/images/icons/1.png" alt="" className="mb-3" />
                 <h3 className="font-font2 text-3xl font-medium mb-3">Awesome Aroma</h3>

@@ -3,7 +3,7 @@ import { Link, useLoaderData, useNavigate } from "react-router";
 
 const UpdateProduct = () => {
     const loaderData = useLoaderData();
-    const {_id}  = loaderData || {}
+    const {_id , name, chef, supplier, taste, category, details, imgPath}  = loaderData || {}
     const navigate = useNavigate()
 
     console.log(_id)
@@ -45,8 +45,12 @@ const updateHandler = e =>{
         }} className="p-4 md:p-12 mb-12">
             <div className="max-w-[1100px] mx-auto">
                 <Link to="/"><h1 className="font-font2 text-2xl font-bold mb-4">Back To Home</h1></Link>
-                <div className="bg-[#F4F3F0] p-4 md:p-16">
-                   <h1 className="text-5xl font-font2 font-bold mb-4 text-center">Update</h1>
+                <div className="bg-[#F4F3F0] p-4 md:p-16"
+                data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1000"
+                >
+                   <h1 className="text-5xl font-font2 font-bold mb-4 text-center">Update {name}</h1>
                    <p className="font-font1 text-center mb-8">It is a long established fact that a reader will be distraceted by 
                     the readable content of a page when looking at its layout. The point of using 
                     Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
@@ -59,13 +63,13 @@ const updateHandler = e =>{
                                  <label className="label">
                                    <span className="label-text">Name</span>
                                  </label>
-                                 <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
+                                 <input type="text" name="name" defaultValue={name} placeholder="Name" className="input input-bordered" required />
                                </div>
                                <div className="form-control w-full">
                                  <label className="label">
                                    <span className="label-text">Chef</span>
                                  </label>
-                                 <input type="text" name="chef" placeholder="chef" className="input input-bordered" required />
+                                 <input type="text" name="chef" defaultValue={chef} placeholder="chef" className="input input-bordered" required />
                                </div>
                            </div>
                             {/* Supplier and Taste */}
@@ -74,13 +78,13 @@ const updateHandler = e =>{
                                  <label className="label">
                                    <span className="label-text">Supplier</span>
                                  </label>
-                                 <input type="text" name="supplier" placeholder="supplier" className="input input-bordered" required />
+                                 <input type="text" name="supplier" defaultValue={supplier} placeholder="supplier" className="input input-bordered" required />
                                </div>
                                <div className="form-control w-full">
                                  <label className="label">
                                    <span className="label-text">Taste</span>
                                  </label>
-                                 <input type="text" name="taste" placeholder="taste" className="input input-bordered" required />
+                                 <input type="text" name="taste" defaultValue={taste} placeholder="taste" className="input input-bordered" required />
                                </div>
                            </div>
                            {/* Category and Details */}
@@ -89,13 +93,13 @@ const updateHandler = e =>{
                                  <label className="label">
                                    <span className="label-text">Category</span>
                                  </label>
-                                 <input type="text" name="category" placeholder="category" className="input input-bordered" required />
+                                 <input type="text" name="category" defaultValue={category} placeholder="category" className="input input-bordered" required />
                                </div>
                                <div className="form-control w-full">
                                  <label className="label">
                                    <span className="label-text">Details</span>
                                  </label>
-                                 <input type="text" name="details" placeholder="details" className="input input-bordered" required />
+                                 <input type="text" name="details" defaultValue={details} placeholder="details" className="input input-bordered" required />
                                </div>
                            </div>
                            {/* photo url */}
@@ -104,7 +108,7 @@ const updateHandler = e =>{
                                  <label className="label">
                                    <span className="label-text">Photo-Url</span>
                                  </label>
-                                 <input type="text" name="imgPath" placeholder="photo-url" className="input input-bordered" required />
+                                 <input type="text" name="imgPath" defaultValue={imgPath} placeholder="photo-url" className="input input-bordered" required />
                                </div> 
                            </div>
                            <div className="">
